@@ -1,15 +1,15 @@
 # from neo4j import GraphDatabase
 # from neo4j import GraphDatabase
-# import os
-# from dotenv import load_dotenv # type: ignore
+import toml
+secrets = toml.load("secrets.toml")
 
 # load_dotenv()
 
 # class Neo4jAgent:
 #     def __init__(self):
-#         uri = os.getenv("NEO4J_URI")
-#         user = os.getenv("NEO4J_USER")
-#         password = os.getenv("NEO4J_PASSWORD")
+#         uri = secrets["NEO4J_URI"]
+#         user = secrets["NEO4J_USER"]
+#         password = secrets["NEO4J_PASSWORD"]
 #         self.driver = GraphDatabase.driver(uri, auth=(user, password))
 
 #     def close(self):

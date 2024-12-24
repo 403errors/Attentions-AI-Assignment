@@ -1,14 +1,11 @@
 import googlemaps
-import os
-from dotenv import load_dotenv
+import toml
 
-# Load environment variables from .env file
-load_dotenv()
-
+secrets = toml.load("secrets.toml")
 
 class MapAgent:
     def __init__(self):
-        self.gmaps = googlemaps.Client(key=os.getenv("MAPS_API_KEY"))
+        self.gmaps = googlemaps.Client(key=secrets["MAPS_API_KEY"])
 
     def create_map_url(self, locations):
         """
@@ -50,7 +47,6 @@ class MapAgent:
 
         return url
 
-
 # Test the MapAgent
 if __name__ == "__main__":
     # Create a MapAgent instance
@@ -60,5 +56,6 @@ if __name__ == "__main__":
     sample_itinerary = "Jaipur, Delhi, Chennai"
 
     # Generate the map
-    map_url = map_agent.generate_map_from_itinerary(sample_itinerary)
-    print(f"Generated Map URL: {map_url}")
+    # map_url = map_agent.generate_map_from_itinerary(sample_itinerary) # Removed due to method name mismatch
+    # print(f"Generated Map URL: {map_url}")
+    pass

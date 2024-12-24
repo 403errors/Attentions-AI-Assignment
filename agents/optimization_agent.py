@@ -1,8 +1,9 @@
 import googlemaps
-import os
+import toml
 import spacy
 from datetime import datetime
 from dotenv import load_dotenv
+secrets = toml.load("secrets.toml")
 
 from agents.memory_agent import MemoryAgent
 from agents.gemini_agent import GeminiAgent
@@ -19,7 +20,7 @@ gemini_agent = GeminiAgent()
 class OptimizationAgent:
     def __init__(self, memory_agent):
         self.memory_agent = memory_agent
-        self.gmaps = googlemaps.Client(key=os.getenv("MAPS_API_KEY"))
+        self.gmaps = googlemaps.Client(key=secrets["MAPS_API_KEY"])
         self.nlp = spacy.load("en_core_web_sm")
 
     def locations_from_itinerary(self, itinerary):
@@ -40,6 +41,7 @@ class OptimizationAgent:
         You are an expert travel planner specializing in single-day itineraries. Your task is to optimize the provided itinerary to ensure it fits within the user's constraints for the specified date. 
 
         Details:
+        - Itinerary: {itinerary}
         - Date: {start_time.date().strftime("%Y-%m-%d")}  # This will now work correctly
         - Budget: INR {budget}
         - Start Time: {start_time.strftime("%H:%M")}
