@@ -1,4 +1,5 @@
 streamlit
+googlemaps
 fastapi
 uvicorn
 neo4j
