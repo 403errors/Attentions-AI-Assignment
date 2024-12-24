@@ -1,6 +1,8 @@
 import streamlit as st
 import os
+import toml
 from datetime import datetime
+secrets = toml.load("secrets.toml")
 from agents.map_agent import MapAgent
 from agents.user_interaction_agent import UserInteractionAgent
 from agents.memory_agent import MemoryAgent

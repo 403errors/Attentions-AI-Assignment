@@ -1,8 +1,8 @@
 import requests
-import os
+import toml
+secrets = toml.load("secrets.toml")
 
-API_KEY = os.getenv("NEWS_API")
-
+API_KEY = secrets["NEWS_API"]
 
 class NewsAgent:
     """
@@ -106,7 +106,7 @@ class NewsAgent:
         if not impacted_articles:
             return "No relevant news found that might affect your plans."
 
-        bullet_points = "\n".join(
+        bullet_points = "\\n".join(
             [
                 f"- **{news['title']}**: {news['description']}"
                 for news in impacted_articles

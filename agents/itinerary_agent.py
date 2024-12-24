@@ -1,22 +1,18 @@
-import os
-import requests
-import spacy
 from agents.memory_agent import MemoryAgent
 from agents.weather_agent import WeatherAgent
 from agents.map_agent import MapAgent
 from agents.gemini_agent import GeminiAgent
-from datetime import datetime
+import toml
 
-import google.generativeai as genai
-from google.api_core.exceptions import GoogleAPICallError, RetryError
+secrets = toml.load("secrets.toml")
+
 
 # Google API Key for Bard
-API_KEY = os.getenv("GEMINI_API_KEY")
+API_KEY = secrets["GEMINI_API_KEY"]
 
 # Initialize Agents
 memory_agent = MemoryAgent()
 gemini_agent = GeminiAgent()
-
 
 class ItineraryAgent:
     def __init__(self, memory_agent):
@@ -44,7 +40,6 @@ class ItineraryAgent:
         else:
             return "Sorry, I couldn't generate an itinerary at this time."
 
-
 # Test the ItineraryAgent
 if __name__ == "__main__":
 
@@ -57,8 +52,8 @@ if __name__ == "__main__":
         "starting_point": "Hotel Roma",
     }
 
-    itinerary_agent = ItineraryAgent(user_preferences)
-    itinerary = itinerary_agent.generate_itinerary(user_preferences)
-    map_url = itinerary_agent.generate_map(itinerary)
+    itinerary_agent = ItineraryAgent(memory_agent)
+    itinerary = itinerary_agent.generate_itinerary(user_preferences["city"], user_preferences["interests"], "today", user_preferences["starting_point"])
+    # map_url = itinerary_agent.generate_map(itinerary) # Removed due to missing method
     print(f"Generated Itinerary: {itinerary}")
-    print(f"Map URL: {map_url}")
+    # print(f"Map URL: {map_url}")
