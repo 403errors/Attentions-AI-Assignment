@@ -1,7 +1,7 @@
 streamlit
 googlemaps
 fastapi
-uvicorn
+google
 neo4j
 transformers
 openai
