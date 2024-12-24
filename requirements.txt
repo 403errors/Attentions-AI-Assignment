@@ -4,7 +4,7 @@ fastapi
 google-generativeai
 neo4j
 spacy
-en-core-web-sm
+# en-core-web-sm
 datetime
 transformers
 openai
