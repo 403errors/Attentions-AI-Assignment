@@ -2,13 +2,10 @@ from agents.memory_agent import MemoryAgent
 from agents.weather_agent import WeatherAgent
 from agents.map_agent import MapAgent
 from agents.gemini_agent import GeminiAgent
-import toml
-
-secrets = toml.load("secrets.toml")
-
+import streamlit as st
 
 # Google API Key for Bard
-API_KEY = secrets["GEMINI_API_KEY"]
+API_KEY = st.secrets["GEMINI_API_KEY"]
 
 # Initialize Agents
 memory_agent = MemoryAgent()

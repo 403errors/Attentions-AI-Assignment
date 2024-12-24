@@ -1,7 +1,5 @@
 # from neo4j import GraphDatabase
 # from neo4j import GraphDatabase
-import toml
-secrets = toml.load("secrets.toml")
 
 # load_dotenv()
 

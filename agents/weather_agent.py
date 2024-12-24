@@ -1,10 +1,10 @@
-import secrets
+import streamlit as st
 import requests
 from datetime import datetime
 
 class WeatherAgent:
     def __init__(self):
-        self.api_key = secrets.OPENWEATHER_API_KEY
+        self.api_key = st.secrets.OPENWEATHER_API_KEY
 
     def get_weather(self, city, date):
         """

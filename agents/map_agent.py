@@ -1,11 +1,9 @@
 import googlemaps
-import toml
-
-secrets = toml.load("secrets.toml")
+import streamlit as st
 
 class MapAgent:
     def __init__(self):
-        self.gmaps = googlemaps.Client(key=secrets["MAPS_API_KEY"])
+        self.gmaps = googlemaps.Client(key=st.secrets["MAPS_API_KEY"])
 
     def create_map_url(self, locations):
         """

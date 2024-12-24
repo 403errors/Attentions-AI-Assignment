@@ -1,9 +1,9 @@
 import googlemaps
-import toml
+import streamlit as st
 import spacy
 from datetime import datetime
 from dotenv import load_dotenv
-secrets = toml.load("secrets.toml")
+
 
 from agents.memory_agent import MemoryAgent
 from agents.gemini_agent import GeminiAgent
@@ -20,7 +20,7 @@ gemini_agent = GeminiAgent()
 class OptimizationAgent:
     def __init__(self, memory_agent):
         self.memory_agent = memory_agent
-        self.gmaps = googlemaps.Client(key=secrets["MAPS_API_KEY"])
+        self.gmaps = googlemaps.Client(key=st.secrets["MAPS_API_KEY"])
         self.nlp = spacy.load("en_core_web_sm")
 
     def locations_from_itinerary(self, itinerary):
