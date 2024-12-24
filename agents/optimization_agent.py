@@ -2,14 +2,9 @@ import googlemaps
 import streamlit as st
 import spacy
 from datetime import datetime
-from dotenv import load_dotenv
-
 
 from agents.memory_agent import MemoryAgent
 from agents.gemini_agent import GeminiAgent
-
-# Load environment variables
-load_dotenv()
 
 # Initialize agents
 memory_agent = MemoryAgent()

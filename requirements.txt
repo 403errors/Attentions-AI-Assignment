@@ -3,6 +3,8 @@ googlemaps
 fastapi
 google-generativeai
 neo4j
+spacy
+datetime
 transformers
 openai
 requests
