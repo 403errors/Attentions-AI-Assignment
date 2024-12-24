@@ -1,6 +1,7 @@
 import googlemaps
 import streamlit as st
 import spacy
+
 from datetime import datetime
 
 from agents.memory_agent import MemoryAgent
@@ -9,7 +10,6 @@ from agents.gemini_agent import GeminiAgent
 # Initialize agents
 memory_agent = MemoryAgent()
 gemini_agent = GeminiAgent()
-
 
 # OptimizationAgent class
 class OptimizationAgent:
@@ -69,7 +69,6 @@ class OptimizationAgent:
             return geocoded_places
         else:
             return "Sorry, I couldn't fetch places from itinerary."
-
 
 # Example usage
 if __name__ == "__main__":
