@@ -1,8 +1,7 @@
 import requests
-import toml
-secrets = toml.load("secrets.toml")
+import streamlit as st
 
-API_KEY = secrets["NEWS_API"]
+API_KEY = st.secrets["NEWS_API"]
 
 class NewsAgent:
     """

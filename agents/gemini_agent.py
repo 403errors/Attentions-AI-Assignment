@@ -1,10 +1,8 @@
-import toml
+import streamlit as st
 import google.generativeai as genai
 
-secrets = toml.load("secrets.toml")
-
 # Google API Key for Bard
-API_KEY = secrets["GEMINI_API_KEY"]
+API_KEY = st.secrets["GEMINI_API_KEY"] 
 
 # Configure generative AI with API key
 genai.configure(api_key=API_KEY)
