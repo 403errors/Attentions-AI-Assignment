@@ -1,0 +1,19 @@
+/* Title style */
+.title {
+    font-size: 48px;
+    font-weight: bold;
+    color: black;
+    background-color: white;
+    padding: 20px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* CSS for buttons positioning in column 2 */
+.col2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Align items to the bottom */
+    align-items: center; /* Center horizontally */
+    height: 100%; /* Full column height */
+}
