@@ -1,6 +1,7 @@
 import googlemaps
 import streamlit as st
 import spacy
+from spacy.cli import download
 
 from datetime import datetime
 
@@ -16,7 +17,14 @@ class OptimizationAgent:
     def __init__(self, memory_agent):
         self.memory_agent = memory_agent
         self.gmaps = googlemaps.Client(key=st.secrets["MAPS_API_KEY"])
-        self.nlp = spacy.load("en_core_web_sm")
+
+        # Check if the model is already downloaded
+        try:
+            self.nlp = spacy.load("en_core_web_sm") 
+        except OSError:
+            # Download the model if it's not found
+            download("en_core_web_sm") 
+            self.nlp = spacy.load("en_core_web_sm")
 
     def locations_from_itinerary(self, itinerary):
         # Process the input text with spaCy
