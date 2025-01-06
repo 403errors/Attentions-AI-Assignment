@@ -35,14 +35,12 @@ news_agent = NewsAgent()
 # Apply the CSS
 load_css(css_file_path)
 
-
 def get_weather(city, date):
     try:
         return weather_agent.get_weather(city, date)
     except Exception as e:
         st.error(f"Error fetching weather data: {str(e)}")
         return None
-
 
 def generate_suggestions(city):
     prompt = f"Provide a list of up to 5 activities in {city} for travelers interested in food, adventure, culture, and local experiences. Each activity should be a short, catchy name."
@@ -61,9 +59,8 @@ def generate_suggestions(city):
         return ["Sorry, there was an error while generating suggestions."]
 
 
-def plan_trip(
-    city, start_time, end_time, budget, interests, date_input, starting_point
-):
+def plan_trip(city, start_time, end_time, budget, interests, date_input, starting_point):
+
     if start_time >= end_time:
         st.error("Start time should be earlier than end time.")
         return
@@ -100,13 +97,9 @@ def plan_trip(
         return
 
     # Optimize itinerary
-    current_date = datetime.today().date()  # Get today's date
-    start_time = datetime.combine(
-        current_date, start_time
-    )  # Combines current date with start time
-    end_time = datetime.combine(
-        current_date, end_time
-    )  # Combines current date with end time
+    current_date = datetime.today().date()  
+    start_time = datetime.combine(current_date, start_time)  
+    end_time = datetime.combine(current_date, end_time)  
 
     optimized_itinerary = optimization_agent.optimize_path(
         itinerary, budget, start_time, end_time
