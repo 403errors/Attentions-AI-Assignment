@@ -97,5 +97,3 @@ For any inquiries or support, please contact:
 > Email: pieisnot22by7@gmail.com
 
 > GitHub: 403errors
-
-Let me know if you’d like to refine any section or add specific details!
